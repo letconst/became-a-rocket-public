@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b124019db44754b1a5584df45861b3, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  maxHitPoint: 0
+  maxStaminaPoint: 0
+  baseJumpPower: 0
+  baseAutoStaminaRecoveryQuantity: 0
+  baseMoveSpeed: 0
+  attackInterval: 0
+  attackTargetFindRadius: 0
+  dodgeInterval: 0
+  normalDodgeInfo:
+    dodgeSpeed: 0
+    requireMagicPower: 0
+    requireStaminaPoint: 0
+    acquireMagicPower: 0
+    invincibilityFrame: 0
+    flinchFrame: 0
+  inAirDodgeInfo:
+    dodgeSpeed: 0
+    requireMagicPower: 0
+    requireStaminaPoint: 0
+    acquireMagicPower: 0
+    invincibilityFrame: 0
+    flinchFrame: 0
+  escapingDodgeInfo:
+    dodgeSpeed: 0
+    requireMagicPower: 0
+    requireStaminaPoint: 0
+    acquireMagicPower: 0
+    invincibilityFrame: 0
+    flinchFrame: 0

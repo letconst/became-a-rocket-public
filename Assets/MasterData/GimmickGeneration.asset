@@ -1,0 +1,829 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b962e68006d4ded83cdf3f7fc298820, type: 3}
+  m_Name: GimmickGeneration
+  m_EditorClassIdentifier: 
+  generateGimmickEntries:
+  - name: "0m \uFF5E 500m"
+    rangeMin: 0
+    rangeMax: 500
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+  - name: "501m \uFF5E 600m"
+    rangeMin: 501
+    rangeMax: 600
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Crow
+      target: {fileID: 11400000, guid: bc4b76e63c1bae74ba57fd32915d84de, type: 2}
+      generationFrequency: 6
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 3
+      - xPos: 4
+        yPos: 0
+        moveMethod: 7
+  - name: "601m \uFF5E 700m"
+    rangeMin: 601
+    rangeMax: 700
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Crow
+      target: {fileID: 11400000, guid: bc4b76e63c1bae74ba57fd32915d84de, type: 2}
+      generationFrequency: 8
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 3
+      - xPos: 4
+        yPos: 0
+        moveMethod: 7
+  - name: "701m \uFF5E 800m"
+    rangeMin: 701
+    rangeMax: 800
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Crow
+      target: {fileID: 11400000, guid: bc4b76e63c1bae74ba57fd32915d84de, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 5
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 3
+      - xPos: 4
+        yPos: 0
+        moveMethod: 7
+  - name: "801m \uFF5E 900m"
+    rangeMin: 801
+    rangeMax: 900
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Crow
+      target: {fileID: 11400000, guid: bc4b76e63c1bae74ba57fd32915d84de, type: 2}
+      generationFrequency: 12
+      generationMinInterval: 5
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 3
+      - xPos: 4
+        yPos: 0
+        moveMethod: 7
+  - name: "901m \uFF5E 1000m"
+    rangeMin: 901
+    rangeMax: 1000
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Crow
+      target: {fileID: 11400000, guid: bc4b76e63c1bae74ba57fd32915d84de, type: 2}
+      generationFrequency: 14
+      generationMinInterval: 5
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 3
+      - xPos: 4
+        yPos: 0
+        moveMethod: 7
+  - name: "1001m \uFF5E 1500m"
+    rangeMin: 1001
+    rangeMax: 1500
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 40
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "1501m \uFF5E 1600m"
+    rangeMin: 1501
+    rangeMax: 1600
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 5
+      generationMinInterval: 30
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "1601m \uFF5E 1700m"
+    rangeMin: 1601
+    rangeMax: 1700
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 5
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "1701m \uFF5E 1800m"
+    rangeMin: 1701
+    rangeMax: 1800
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 7.5
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "1801m \uFF5E 1900m"
+    rangeMin: 1801
+    rangeMax: 1900
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "1901m \uFF5E 2000m"
+    rangeMin: 1901
+    rangeMax: 2000
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "1901m \uFF5E 2000m"
+    rangeMin: 1901
+    rangeMax: 2000
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+  - name: "2001m \uFF5E 2200m"
+    rangeMin: 2001
+    rangeMax: 2200
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 5
+      generationMinInterval: 50
+      generationMaxInterval: 150
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "2201m \uFF5E 2400m"
+    rangeMin: 2201
+    rangeMax: 2400
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 11.5
+      generationMinInterval: 20
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 6
+      generationMinInterval: 50
+      generationMaxInterval: 125
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "2401m \uFF5E 2600m"
+    rangeMin: 2401
+    rangeMax: 2600
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 13
+      generationMinInterval: 20
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 45
+      generationMaxInterval: 125
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "2601m \uFF5E 2800m"
+    rangeMin: 2601
+    rangeMax: 2800
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 14.5
+      generationMinInterval: 20
+      generationMaxInterval: 60
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 8
+      generationMinInterval: 45
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "2801m \uFF5E 3000m"
+    rangeMin: 2801
+    rangeMax: 3000
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 15
+      generationMinInterval: 15
+      generationMaxInterval: 60
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 9
+      generationMinInterval: 40
+      generationMaxInterval: 80
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "3001m \uFF5E 3500m"
+    rangeMin: 3001
+    rangeMax: 3500
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 15
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 16.5
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 40
+      generationMaxInterval: 80
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "3501m \uFF5E 4000m"
+    rangeMin: 3501
+    rangeMax: 4000
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 15
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 17.5
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 40
+      generationMaxInterval: 70
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "4001m \uFF5E 4500m"
+    rangeMin: 4001
+    rangeMax: 4500
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 15
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 20
+      generationMinInterval: 10
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 12.5
+      generationMinInterval: 40
+      generationMaxInterval: 60
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
+  - name: "4501m \uFF5E 9999999m"
+    rangeMin: 4501
+    rangeMax: 9999999
+    generateOptions:
+    - name: Wind
+      target: {fileID: 11400000, guid: 5d174f59098b4d649921755cf7e4a681, type: 2}
+      generationFrequency: 10
+      generationMinInterval: 20
+      generationMaxInterval: 100
+      initializeOptions:
+      - xPos: 0
+        yPos: 0
+        moveMethod: 0
+    - name: RainCloud
+      target: {fileID: 11400000, guid: f97411b9894acb74faa81211ea88b752, type: 2}
+      generationFrequency: 7
+      generationMinInterval: 15
+      generationMaxInterval: 50
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 0
+    - name: Meteor
+      target: {fileID: 11400000, guid: c3104ca72d041e7488b48aba29fa1537, type: 2}
+      generationFrequency: 22.5
+      generationMinInterval: 10
+      generationMaxInterval: 40
+      initializeOptions:
+      - xPos: 2
+        yPos: 0
+        moveMethod: 4
+      - xPos: 4
+        yPos: 0
+        moveMethod: 6
+    - name: UFO
+      target: {fileID: 11400000, guid: 5e1fa0e45d3fdb846ae69cbfd5cb9e5e, type: 2}
+      generationFrequency: 12.5
+      generationMinInterval: 35
+      generationMaxInterval: 60
+      initializeOptions:
+      - xPos: 1
+        yPos: 0
+        moveMethod: 5
