@@ -30,8 +30,7 @@ public sealed class MainGameHandler : MonoBehaviour, InputActions.IUIActions
             .Subscribe(static _ => OnSubmittedOnReady())
             .AddTo(this);
 
-        await UniTask.DelayFrame(3);
-
+        await GameInitializer.WaitForInitialize();
         await SoundManager.Instance.WaitForReady();
 
         _soundHandler = new GameSoundHandler(GameManager.Instance, SoundManager.Instance, ScoreManager.Instance);
@@ -90,5 +89,17 @@ public sealed class MainGameHandler : MonoBehaviour, InputActions.IUIActions
         _lastSelectedUiObject = selectedUiObject;
 
         SoundManager.Instance.PlayUISound(UISoundDef.Select);
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        // 押下時のみ処理
+        if (!context.action.WasPressedThisFrame())
+            return;
+
+        if (EventSystem.current.currentSelectedGameObject)
+        {
+            SoundManager.Instance.PlayUISound(UISoundDef.Submit);
+        }
     }
 }

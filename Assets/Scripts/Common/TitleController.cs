@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
 {
@@ -14,7 +15,7 @@ public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
         _input.Enable();
 
         // SoundManager生成まで待機
-        await UniTask.DelayFrame(5);
+        await GameInitializer.WaitForInitialize();
         await SoundManager.Instance.WaitForReady();
 
         SoundManager.Instance.StopAll();
@@ -27,6 +28,27 @@ public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
         if (!context.started)
             return;
 
+        LoadMainGame();
+    }
+
+    public void OnNavigate(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        // ButtonControlか確認
+        if (context.control is not ButtonControl control)
+            return;
+
+        if (control.wasPressedThisFrame)
+        {
+            LoadMainGame();
+        }
+    }
+
+    private void LoadMainGame()
+    {
         if (SceneManager.Instance.IsLoading)
             return;
 
@@ -34,9 +56,5 @@ public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
 
         SoundManager.Instance.PlayUISound(UISoundDef.Submit);
         SceneManager.Instance.LoadScene(GameScene.MainGame, sceneDataPack: dataPack);
-    }
-
-    public void OnNavigate(InputAction.CallbackContext context)
-    {
     }
 }

@@ -11,6 +11,25 @@ public sealed class FuelGaugeView : MonoBehaviour
     [SerializeField]
     private Image gaugeFillImage;
 
+    [SerializeField]
+    private RawImage gaugeOverlayRawImage;
+
+    [SerializeField]
+    private Animation blinkAnimation;
+
+    /// <summary>
+    /// 現在のゲージスライダーの値
+    /// </summary>
+    public float GaugeSliderValue
+    {
+        get
+        {
+            Assert.IsNotNull(gaugeSlider, "gaugeSlider != null");
+
+            return gaugeSlider.value;
+        }
+    }
+
     /// <summary>
     /// ゲージの値が変更されたことを通知するObserver
     /// </summary>
@@ -66,5 +85,38 @@ public sealed class FuelGaugeView : MonoBehaviour
         Assert.IsNotNull(gaugeSlider, "gaugeSlider != null");
 
         gaugeSlider.minValue = minValue;
+    }
+
+    /// <summary>
+    /// オーバーレイ画像のUVオフセット値を加算する
+    /// </summary>
+    /// <param name="newOffset">加算する量</param>
+    public void AddGaugeOverlayOffset(Vector2 newOffset)
+    {
+        Assert.IsNotNull(gaugeOverlayRawImage, "gaugeOverlayImage != null");
+
+        Rect uvRect = gaugeOverlayRawImage.uvRect;
+        uvRect.x                    = Mathf.Repeat(uvRect.x + newOffset.x, 1);
+        uvRect.y                    = Mathf.Repeat(uvRect.y + newOffset.y, 1);
+        gaugeOverlayRawImage.uvRect = uvRect;
+    }
+
+    /// <summary>
+    /// アウトラインの点滅アニメーションの再生状態を設定する
+    /// </summary>
+    /// <param name="isAnimate"></param>
+    public void SetBlinkOutlineAnimationStatus(bool isAnimate)
+    {
+        if (isAnimate)
+        {
+            blinkAnimation.Play();
+        }
+        else
+        {
+            blinkAnimation.Stop();
+
+            // アウトラインをリセット
+            blinkAnimation.clip.SampleAnimation(blinkAnimation.gameObject, blinkAnimation.clip.length / 2f);
+        }
     }
 }

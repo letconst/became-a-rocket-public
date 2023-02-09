@@ -35,17 +35,6 @@ public sealed class GimmickGenerator : MonoBehaviour
 
         await _gimmickManager.WaitForReady();
 
-        _generateTargetProfile = _gimmickManager.GetCurrentScoreProfile();
-
-        // プールに生成対象のギミックを登録
-        foreach (GimmickGenerateOptions gimmick in _generateTargetProfile.GenerateOptions)
-        {
-            if (!gimmick.Target)
-                continue;
-
-            _gimmickManager.Pool.RegisterPoolTarget(gimmick.Target.Type, gimmick.Target.Prefab);
-        }
-
         // 初期生成
         Generate(heightPerGeneration);
 
@@ -59,56 +48,60 @@ public sealed class GimmickGenerator : MonoBehaviour
     /// <param name="generationHeight">生成を行う領域の高さ</param>
     private void Generate(int generationHeight)
     {
-        foreach (GimmickGenerateOptions gimmick in _generateTargetProfile.GenerateOptions)
+        for (int i = 0; i < generationHeight; i++)
         {
-            if (!gimmick.Target)
-                continue;
+            // 生成予定高度での生成プロファイルを取得
+            _generateTargetProfile = _gimmickManager.GetGenerateProfileByHeight(_generatedHeight + i);
+            GimmickGenerateOptions[] generateOptions = _generateTargetProfile.GenerateOptions;
 
-            for (int i = 0; i < generationHeight; i++)
+            foreach (GimmickGenerateOptions genOption in generateOptions)
             {
-                GimmickInitializeOptions initializeOptions = gimmick.InitializeOptions.GetRandom();
+                MasterGimmick genTargetData = genOption.Target;
 
-                float x = GimmickUtility.GetXPosition(initializeOptions.XPosition);
-                float y = _generatedHeight + i;
+                if (!genTargetData)
+                    continue;
 
-                GimmickType gimmickType = gimmick.Target.Type;
+                GimmickInitializeOptions initOption = genOption.InitializeOptions.GetRandom();
 
-                var   position = new Vector2(x, y);
+                float   x        = GimmickUtility.GetXPosition(initOption.XPosition);
+                float   y        = _generatedHeight + i;
+                Vector2 position = new(x, y);
+
                 float lastGenPosDiff;
 
                 // 最終生成高度があるなら、生成予定地からの差分を計算
-                if (_lastGeneratedHeights.ContainsKey(gimmickType))
+                if (_lastGeneratedHeights.TryGetValue(genTargetData.Type, out int lastGenHeight))
                 {
-                    lastGenPosDiff = y - _lastGeneratedHeights[gimmickType];
+                    lastGenPosDiff = y - lastGenHeight;
                 }
                 // ないなら項目を追加し、最終生成高度を最低生成高度として初期化
                 else
                 {
-                    _gimmickManager.Pool.RegisterPoolTarget(gimmickType, gimmick.Target.Prefab);
-                    _lastGeneratedHeights.Add(gimmickType, 0);
-                    lastGenPosDiff = gimmick.GenerationMinInterval;
+                    _gimmickManager.Pool.RegisterPoolTarget(genTargetData.Type, genTargetData.Prefab);
+                    _lastGeneratedHeights.Add(genTargetData.Type, 0);
+                    lastGenPosDiff = genOption.GenerationMinInterval;
                 }
 
                 // このギミックが以前の生成位置から指定間隔生成されていなければ必ず生成
-                if (gimmick.GenerationMaxInterval > lastGenPosDiff)
+                if (genOption.GenerationMaxInterval > lastGenPosDiff)
                 {
                     // 確率判定
-                    if (!GimmickUtility.JudgeProbability(gimmick.GenerationFrequency))
+                    if (!GimmickUtility.JudgeProbability(genOption.GenerationFrequency))
                         continue;
 
                     // このギミックの以前の生成位置が最小間隔以上のときのみ生成
-                    if (lastGenPosDiff < gimmick.GenerationMinInterval)
+                    if (lastGenPosDiff < genOption.GenerationMinInterval)
                         continue;
                 }
 
-                GameObject newGimmick = _gimmickManager.Pool.Rent(gimmickType);
+                GameObject newGimmick = _gimmickManager.Pool.Rent(genTargetData.Type);
                 newGimmick.transform.position = position;
 
                 // 初期化処理があれば呼び出す
-                newGimmick.GetComponent<IInitializableGimmick>()?.InitializeOnGenerate(initializeOptions, position);
+                newGimmick.GetComponent<IInitializableGimmick>()?.InitializeOnGenerate(initOption, position);
 
                 // このギミックの生成位置を記憶
-                _lastGeneratedHeights[gimmickType] = (int) y;
+                _lastGeneratedHeights[genTargetData.Type] = (int) y;
             }
         }
 
@@ -124,8 +117,6 @@ public sealed class GimmickGenerator : MonoBehaviour
 
     private void OnScoreChanged(int score)
     {
-        _generateTargetProfile = _gimmickManager.GetCurrentScoreProfile();
-
         float halfHeight = heightPerGeneration / 2f;
 
         // 生成可能な高さを超えているときのみ処理

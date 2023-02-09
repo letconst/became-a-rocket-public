@@ -14,6 +14,9 @@ public sealed class ResultPresenter : MonoBehaviour
     [SerializeField]
     private RankRecordView rankRecordPrefab;
 
+    [SerializeField]
+    private uint rankingCountToDisplay;
+
     private void Start()
     {
         Assert.IsNotNull(view, "view != null");
@@ -87,8 +90,8 @@ public sealed class ResultPresenter : MonoBehaviour
 
         for (int i = 0; i < rankingList.Count; i++)
         {
-            // 5位まで表示のため、それ以降は無視
-            if (i >= 5) break;
+            // 指定順位までを表示。以降は無視
+            if (i >= rankingCountToDisplay) break;
 
             RankingRecord record = rankingList[i];
 
@@ -96,7 +99,7 @@ public sealed class ResultPresenter : MonoBehaviour
             RankRecordView recordView = Instantiate(rankRecordPrefab, view.RankingRecordsParent);
 
             // 各種テキスト設定
-            recordView.SetRankText(i + 1);
+            // recordView.SetRankText(i + 1);
             recordView.SetScoreText(record.score);
         }
     }

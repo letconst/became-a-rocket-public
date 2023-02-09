@@ -877,7 +877,7 @@ MonoBehaviour:
   m_MoveAction: {fileID: -685608818329737127, guid: 84afad7ad53bc6549be2b2c2cd80776e, type: 3}
   m_SubmitAction: {fileID: 2853121902196940910, guid: 84afad7ad53bc6549be2b2c2cd80776e, type: 3}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: -3573084847229728335, guid: 84afad7ad53bc6549be2b2c2cd80776e, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}

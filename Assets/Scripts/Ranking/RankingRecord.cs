@@ -5,13 +5,23 @@ using System.Linq;
 /// ランキングの1レコード
 /// </summary>
 [System.Serializable]
-public sealed class RankingRecord
+public sealed class RankingRecord : System.IEquatable<RankingRecord>
 {
     public int score;
 
     public RankingRecord(int score)
     {
         this.score = score;
+    }
+
+    public bool Equals(RankingRecord other)
+    {
+        return score == other?.score;
+    }
+
+    public override int GetHashCode()
+    {
+        return score.GetHashCode();
     }
 }
 
@@ -29,6 +39,9 @@ public sealed class RankingList
     public RankingList()
     {
         records ??= new List<RankingRecord>();
+
+        // 念の為、重複解消しておく
+        DistinctRecords();
     }
 
     /// <summary>
@@ -37,6 +50,29 @@ public sealed class RankingList
     /// <param name="record">追加するレコード</param>
     public void AddRecord(RankingRecord record)
     {
+        int duplicateCount = 0;
+
+        // 重複チェック
+        foreach (RankingRecord rankingRecord in records)
+        {
+            if (rankingRecord.Equals(record))
+            {
+                duplicateCount++;
+            }
+        }
+
+        // 重複があれば回避
+        if (0 < duplicateCount)
+        {
+            // 2件以上重複してたら解消
+            if (1 < duplicateCount)
+            {
+                DistinctRecords();
+            }
+
+            return;
+        }
+
         records.Add(record);
     }
 
@@ -71,5 +107,14 @@ public sealed class RankingList
     public void SortRecordsByDesc()
     {
         records = records.OrderByDescending(r => r.score).ToList();
+    }
+
+    /// <summary>
+    /// 登録されているレコードから重複項目を消去する
+    /// </summary>
+    private void DistinctRecords()
+    {
+        HashSet<RankingRecord> hashRecords = new(records);
+        records = hashRecords.ToList();
     }
 }

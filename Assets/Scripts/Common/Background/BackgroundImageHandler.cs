@@ -31,7 +31,7 @@ public sealed class BackgroundImageHandler : MonoBehaviour
             _halfBackgroundLength = _backgroundLength / 2f;
         }
 
-        await UniTask.DelayFrame(3);
+        await GameInitializer.WaitForInitialize();
         await SoundManager.Instance.WaitForReady();
 
         _soundHandler = new BackgroundSoundHandler(SoundManager.Instance, ScoreManager.Instance, startCrossFadeOffset);

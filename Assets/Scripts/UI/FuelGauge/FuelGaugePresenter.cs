@@ -25,6 +25,20 @@ public sealed class FuelGaugePresenter : MonoBehaviour
         _model.FuelAmountRP.Subscribe(OnFuelAmountChanged).AddTo(this);
     }
 
+    private void LateUpdate()
+    {
+        if (GameManager.Instance.CurrentState.Value is GameState.Ready or GameState.InGame)
+        {
+            Assert.IsNotNull(_view, "view != null");
+            Assert.IsNotNull(_model, "model != null");
+
+            // オーバーレイ画像のUVオフセット値を設定
+            Vector2 deltaOffset = new(_model.GetOverlayDeltaOffset(), 0);
+
+            _view.AddGaugeOverlayOffset(deltaOffset);
+        }
+    }
+
     private void OnFuelAmountChanged(float newAmount)
     {
         Assert.IsNotNull(_view, "view != null");
@@ -47,6 +61,9 @@ public sealed class FuelGaugePresenter : MonoBehaviour
             targetSettings = settings;
         }
 
+        Assert.IsNotNull(targetSettings, "targetSettings != null");
+
         _view.SetGaugeColor(targetSettings.GaugeColor);
+        _view.SetBlinkOutlineAnimationStatus(targetSettings.IsAnimateOutline);
     }
 }

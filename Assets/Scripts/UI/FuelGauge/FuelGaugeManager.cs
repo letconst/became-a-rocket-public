@@ -13,6 +13,9 @@ public sealed class FuelGaugeManager : SingletonMonoBehaviour<FuelGaugeManager>
     [SerializeField, Header("1秒間に減少するゲージの量")]
     private float gaugeDecreaseAmountPerSec;
 
+    [SerializeField, Header("燃料ゲージのオーバーレイが動く速度 (秒間)")]
+    private float gaugeOverlayAnimationSpeedInSec;
+
     [SerializeField, Header("ゲージの残量ごとの設定")]
     private FuelGaugeRatioSettings[] gaugeRatioSettings;
 
@@ -86,5 +89,14 @@ public sealed class FuelGaugeManager : SingletonMonoBehaviour<FuelGaugeManager>
     public float GetClampedAmount()
     {
         return Mathf.Clamp(_fuelAmountRP.Value, gaugeMinValue, gaugeMaxValue);
+    }
+
+    /// <summary>
+    /// オーバーレイ画像のUVオフセット値の加算量を取得する
+    /// </summary>
+    /// <returns></returns>
+    public float GetOverlayDeltaOffset()
+    {
+        return Time.deltaTime * gaugeOverlayAnimationSpeedInSec;
     }
 }

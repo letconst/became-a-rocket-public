@@ -16,7 +16,7 @@ public static class GameConstants
         layerMask    = LayerConstants.Player
     };
 
-    public static readonly string ScoreFormat = "{0} M";
+    public static readonly string ScoreFormat = "{0}";
 
     public static readonly string LocalRankingKey = "LOCAL_RANKING";
 }

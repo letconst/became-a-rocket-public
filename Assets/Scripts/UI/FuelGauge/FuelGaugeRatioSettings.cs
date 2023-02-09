@@ -15,6 +15,12 @@ public class FuelGaugeRatioSettings
     /// <summary>ゲージの色</summary>
     public Color GaugeColor => gaugeColor;
 
+    [SerializeField, Header("ゲージの周りにアウトラインを表示するか")]
+    private bool isAnimateOutline;
+
+    /// <summary>ゲージの周りにアウトラインを表示するか</summary>
+    public bool IsAnimateOutline => isAnimateOutline;
+
     [SerializeField, Header("ギャーくんの見た目")]
     private Sprite gyaarSprite;
 

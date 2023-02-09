@@ -8,6 +8,8 @@ public sealed class GimmickManager : SingletonMonoBehaviour<GimmickManager>
 {
     private GimmickSoundHandler _soundHandler;
 
+    private readonly Queue<GimmickGenerateEntry> _entriesPerHeightQueue = new();
+
     /// <summary>ギミック生成のマスターデータ</summary>
     public MasterGimmickGeneration GenerateData { get; private set; }
 
@@ -22,7 +24,14 @@ public sealed class GimmickManager : SingletonMonoBehaviour<GimmickManager>
         GenerateData =
             await MasterDataManager.Instance.GetMasterDataAsync<MasterGimmickGeneration>("GimmickGeneration");
 
-        await UniTask.DelayFrame(3);
+        Assert.IsNotNull(GenerateData, "GenerateData != null");
+
+        foreach (GimmickGenerateEntry entry in GenerateData.GenerateGimmickEntries)
+        {
+            _entriesPerHeightQueue.Enqueue(entry);
+        }
+
+        await GameInitializer.WaitForInitialize();
         await SoundManager.Instance.WaitForReady();
 
         _soundHandler = new GimmickSoundHandler(GameManager.Instance, SoundManager.Instance);
@@ -43,50 +52,22 @@ public sealed class GimmickManager : SingletonMonoBehaviour<GimmickManager>
     }
 
     /// <summary>
-    /// 現在スコアでのギミック生成プロファイルを取得する
+    /// 指定の高さに対応する生成プロファイルを取得する
+    /// TODO: 過去の高さに対応するプロファイルは取得できないので、どうにかする
     /// </summary>
+    /// <param name="height"></param>
     /// <returns></returns>
-    public GimmickGenerateEntry GetCurrentScoreProfile()
+    public GimmickGenerateEntry GetGenerateProfileByHeight(int height)
     {
-        Assert.IsNotNull(GenerateData, "GenerateData != null");
+        GimmickGenerateEntry queue = _entriesPerHeightQueue.Peek();
 
-        GimmickGenerateEntry currentProfileToReturn = null;
-
-        int currentScore = ScoreManager.Instance.CurrentScore;
-
-        foreach (GimmickGenerateEntry entry in GenerateData.GenerateGimmickEntries)
+        if (height < queue.RangeMax)
         {
-            if (entry.RangeMin <= currentScore && currentScore <= entry.RangeMax)
-            {
-                currentProfileToReturn = entry;
-
-                break;
-            }
+            return queue;
         }
 
-        return currentProfileToReturn;
-    }
+        _entriesPerHeightQueue.Dequeue();
 
-    /// <summary>
-    /// 現在スコアでの指定ギミックの設定データを取得する
-    /// </summary>
-    /// <param name="type">取得するデータのギミック種類</param>
-    /// <returns></returns>
-    public GimmickGenerateOptions GetCurrentGenerateOptions(GimmickType type)
-    {
-        GimmickGenerateOptions currentOptionToReturn = null;
-        GimmickGenerateEntry   currentEntry          = GetCurrentScoreProfile();
-
-        foreach (GimmickGenerateOptions options in currentEntry.GenerateOptions)
-        {
-            if (options.Target.Type != type)
-                continue;
-
-            currentOptionToReturn = options;
-
-            break;
-        }
-
-        return currentOptionToReturn;
+        return _entriesPerHeightQueue.Peek();
     }
 }
