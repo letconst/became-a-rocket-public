@@ -1,6 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using UniRx;
 
+/// <summary>
+/// 背景画像に関するサウンドを制御するクラス
+/// </summary>
 public sealed class BackgroundSoundHandler : System.IDisposable
 {
     private readonly int _startCrossFadeOffset;
@@ -17,6 +20,11 @@ public sealed class BackgroundSoundHandler : System.IDisposable
         _startCrossFadeOffset = startCrossFadeOffset;
     }
 
+    /// <summary>
+    /// 指定のスコア (高度) に到達した際のBGM切り替えを登録する
+    /// </summary>
+    /// <param name="score">切り替えるスコア (高度)</param>
+    /// <param name="nextMusic">切り替えるBGM</param>
     public void RegisterMusicSwitching(int score, MusicDef nextMusic)
     {
         _scoreManager.MaxScoreChanged.Skip(1)

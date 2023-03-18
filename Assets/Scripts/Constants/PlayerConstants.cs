@@ -1,4 +1,7 @@
-﻿public static class PlayerConstants
+﻿/// <summary>
+/// プレイヤーに関する定数定義用クラス
+/// </summary>
+public static class PlayerConstants
 {
     public enum RotateDirection
     {

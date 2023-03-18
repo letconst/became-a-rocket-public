@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// 燃料ゲージUIのPresenterクラス
+/// </summary>
 [RequireComponent(typeof(FuelGaugeView))]
 public sealed class FuelGaugePresenter : MonoBehaviour
 {

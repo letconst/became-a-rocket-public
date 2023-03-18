@@ -3,6 +3,9 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギミック「UFO」の動作処理を行うクラス
+/// </summary>
 public sealed class UFOHandler : GimmickHandlerBase, IInitializableGimmick, IMovableGimmick
 {
     [SerializeField, Header("接触判定を行うCollider")]
@@ -65,7 +68,7 @@ public sealed class UFOHandler : GimmickHandlerBase, IInitializableGimmick, IMov
     {
         IsMoving = false;
 
-        // Invisibleイベント発行
+        // プールへの返却イベント発行
         GameManager.Instance.PlayerBroker.Publish(GameEvent.Player.OnReturnGimmickRequest.Get(GimmickType.UFO, gameObject));
     }
 

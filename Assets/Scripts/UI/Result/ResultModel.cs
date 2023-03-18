@@ -1,6 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+/// <summary>
+/// リザルトUIのModelクラス
+/// </summary>
 public sealed class ResultModel : MonoBehaviour
 {
     /// <summary>

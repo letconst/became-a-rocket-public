@@ -3,6 +3,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ゲーム説明表示UIのPresenterクラス
+/// </summary>
 public sealed class DescriptionPresenter : MonoBehaviour
 {
     [SerializeField]

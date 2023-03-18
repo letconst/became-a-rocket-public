@@ -1,6 +1,9 @@
 ﻿using System;
 using UniRx;
 
+/// <summary>
+/// スコアを管理するクラス。UIのModelクラスも兼用
+/// </summary>
 public sealed class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 {
     private readonly ReactiveProperty<int> _currentScore = new();

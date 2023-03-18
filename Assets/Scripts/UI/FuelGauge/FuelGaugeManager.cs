@@ -2,6 +2,9 @@
 using UniRx;
 using UnityEngine;
 
+/// <summary>
+/// 燃料ゲージを管理するクラス。Modelも兼用
+/// </summary>
 public sealed class FuelGaugeManager : SingletonMonoBehaviour<FuelGaugeManager>
 {
     [SerializeField, Header("燃料ゲージの最大値")]

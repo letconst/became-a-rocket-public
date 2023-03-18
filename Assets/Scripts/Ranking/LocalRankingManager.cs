@@ -5,6 +5,9 @@ using UniRx;
 using UniRx.Triggers;
 #endif
 
+/// <summary>
+/// ゲーム内ランキングを管理するためのクラス
+/// </summary>
 public class LocalRankingManager : SingletonBase<LocalRankingManager>, System.IDisposable
 {
     private RankingList _rankingList;

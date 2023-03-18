@@ -1,6 +1,9 @@
 ﻿using UniRx;
 using UnityEngine;
 
+/// <summary>
+/// スコアUIのPresenterクラス
+/// </summary>
 [RequireComponent(typeof(ScoreView))]
 [RequireComponent(typeof(ScoreManager))]
 public sealed class ScorePresenter : MonoBehaviour

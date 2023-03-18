@@ -22,6 +22,15 @@ public sealed class BackgroundImageHandler : MonoBehaviour
 
     private async UniTaskVoid Start()
     {
+        await Initialize();
+        Generate();
+    }
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    private async UniTask Initialize()
+    {
         _parent = new GameObject("Backgrounds").transform;
 
         // 背景画像の高さを取得
@@ -31,15 +40,16 @@ public sealed class BackgroundImageHandler : MonoBehaviour
             _halfBackgroundLength = _backgroundLength / 2f;
         }
 
-        await GameInitializer.WaitForInitialize();
-        await SoundManager.Instance.WaitForReady();
+        // 他の初期化処理を待機
+        await UniTask.WhenAll(GameInitializer.WaitForInitialize(), SoundManager.Instance.WaitForReady());
 
         _soundHandler = new BackgroundSoundHandler(SoundManager.Instance, ScoreManager.Instance, startCrossFadeOffset);
         _soundHandler.AddTo(this);
-
-        Generate();
     }
 
+    /// <summary>
+    /// 背景画像の一括生成を行う
+    /// </summary>
     private void Generate()
     {
         float lastGenerateY = offsetY;
@@ -85,6 +95,12 @@ public sealed class BackgroundImageHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 背景画像1個分の生成を行う
+    /// </summary>
+    /// <param name="image">表示する<see cref="Sprite"/>画像</param>
+    /// <param name="objectName"><see cref="GameObject"/>の名前</param>
+    /// <returns>生成された<see cref="GameObject"/>にアタッチされた<see cref="SpriteRenderer"/></returns>
     private SpriteRenderer GenerateSpriteRenderer(Sprite image, string objectName)
     {
         var newBg            = new GameObject(objectName) { transform = { parent = _parent } };

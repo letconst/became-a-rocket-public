@@ -1,5 +1,9 @@
 ﻿using UniRx;
+using UnityEngine.Assertions;
 
+/// <summary>
+/// ギミックに関するサウンドを制御するクラス
+/// </summary>
 public sealed class GimmickSoundHandler : System.IDisposable
 {
     private SoundManager _soundManager;
@@ -8,12 +12,17 @@ public sealed class GimmickSoundHandler : System.IDisposable
 
     public GimmickSoundHandler(GameManager gameManager, SoundManager soundManager)
     {
+        Assert.IsNotNull(gameManager, "gameManager != null");
+        Assert.IsNotNull(soundManager, "soundManager != null");
+
         _soundManager = soundManager;
 
+        // ギミック移動開始時のイベント登録
         gameManager.PlayerBroker.Receive<GameEvent.Player.OnBeginGimmickMovement>()
                    .Subscribe(OnBeginGimmickMovement)
                    .AddTo(_soundEventDisposable);
 
+        // 雨雲との接触時のインベント登録
         gameManager.PlayerBroker.Receive<GameEvent.Player.OnRainCloudContacted>()
                    .Subscribe(OnRainCloudContacted)
                    .AddTo(_soundEventDisposable);

@@ -3,6 +3,9 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギミック「風」の動作処理を行うクラス
+/// </summary>
 public sealed partial class WindHandler : GimmickHandlerBase, IInitializableGimmick
 {
     public enum WindDirection
@@ -131,7 +134,7 @@ public sealed partial class WindHandler : GimmickHandlerBase, IInitializableGimm
 
     private void OnInvisible()
     {
-        // カメラの範囲外になった際にプールへの返却要求
+        // プールへの返却イベント発行
         GameManager.Instance.PlayerBroker.Publish(GameEvent.Player.OnReturnGimmickRequest.Get(GimmickType.Wind, gameObject));
     }
 

@@ -3,6 +3,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// リザルトUIのPresenterクラス
+/// </summary>
 public sealed class ResultPresenter : MonoBehaviour
 {
     [SerializeField]

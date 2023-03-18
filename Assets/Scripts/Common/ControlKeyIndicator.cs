@@ -7,6 +7,9 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ゲーム開始直後にギャー君の足元に操作キーの表示処理を行うクラス
+/// </summary>
 public sealed class ControlKeyIndicator : MonoBehaviour
 {
     [SerializeField, Header("左回転操作キー画像のSpriteRenderer")]
@@ -37,6 +40,11 @@ public sealed class ControlKeyIndicator : MonoBehaviour
 
     private void Start()
     {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         Assert.IsNotNull(leftKeyRender, "leftRender != null");
         Assert.IsNotNull(rightKeyRenderer, "rightRenderer != null");
         Assert.IsNotNull(followTargetTrf, "followTarget != null");
@@ -64,7 +72,7 @@ public sealed class ControlKeyIndicator : MonoBehaviour
         _countdownDisposable = this.UpdateAsObservable()
                                    .Where(static _ => GameManager.Instance.CurrentState.Value == GameState.InGame)
                                    .Take(1)
-                                   .Subscribe(_ => CountdownToHideIndicator().Forget())
+                                   .Subscribe(_ => CountdownToHideIndicator(OnIndicateTimeIsOver().Forget).Forget())
                                    .AddTo(this);
     }
 
@@ -87,7 +95,11 @@ public sealed class ControlKeyIndicator : MonoBehaviour
         FollowKeyPosition(_rightKeyTrf);
     }
 
-    private async UniTaskVoid CountdownToHideIndicator()
+    /// <summary>
+    /// 非表示とするまでのカウントダウン処理
+    /// </summary>
+    /// <param name="onEndOfCountdown">カウントダウン終了時の処理</param>
+    private async UniTaskVoid CountdownToHideIndicator(Action onEndOfCountdown)
     {
         float countdownTimeElapsed = 0f;
 
@@ -97,13 +109,16 @@ public sealed class ControlKeyIndicator : MonoBehaviour
 
             if (countdownTimeElapsed >= indicateSeconds)
             {
-                OnIndicateTimeIsOver().Forget();
+                onEndOfCountdown?.Invoke();
 
                 break;
             }
         }
     }
 
+    /// <summary>
+    /// 表示時間経過後の処理
+    /// </summary>
     private async UniTaskVoid OnIndicateTimeIsOver()
     {
         // 左右キー画像のフェードアウトを待機
@@ -116,5 +131,7 @@ public sealed class ControlKeyIndicator : MonoBehaviour
 
         _followDisposable    = null;
         _countdownDisposable = null;
+
+        Destroy(this);
     }
 }

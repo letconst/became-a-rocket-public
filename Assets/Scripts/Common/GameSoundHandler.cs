@@ -1,5 +1,9 @@
 ﻿using UniRx;
+using UnityEngine.Assertions;
 
+/// <summary>
+/// メインゲームシーンでの一部サウンドを制御するクラス
+/// </summary>
 public sealed class GameSoundHandler : System.IDisposable
 {
     private SoundManager _soundManager;
@@ -8,10 +12,13 @@ public sealed class GameSoundHandler : System.IDisposable
 
     public GameSoundHandler(GameManager gameManager, SoundManager soundManager, ScoreManager scoreManager)
     {
+        Assert.IsNotNull(gameManager, "gameManager != null");
+        Assert.IsNotNull(soundManager, "soundManager != null");
+        Assert.IsNotNull(scoreManager, "scoreManager != null");
+
         _soundManager = soundManager;
 
         gameManager.CurrentState.DistinctUntilChanged().Subscribe(OnStateChanged).AddTo(_soundEventDisposable);
-
         scoreManager.MaxScoreChanged.Skip(1).Subscribe(OnMaxScoreChanged).AddTo(_soundEventDisposable);
     }
 
@@ -35,7 +42,7 @@ public sealed class GameSoundHandler : System.IDisposable
 
     public void Dispose()
     {
-        _soundEventDisposable.Dispose();
+        _soundEventDisposable?.Dispose();
 
         _soundManager         = null;
         _soundEventDisposable = null;

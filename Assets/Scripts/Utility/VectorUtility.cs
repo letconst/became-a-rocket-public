@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// UnityのVector系に関するユーティリティクラス
+/// </summary>
 public static class VectorUtility
 {
     /// <summary>

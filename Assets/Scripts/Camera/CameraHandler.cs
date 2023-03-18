@@ -1,9 +1,12 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-public class CameraHandler : CinemachineExtension
+/// <summary>
+/// ギャー君を追従するカメラを制御するクラス
+/// </summary>
+public sealed class CameraHandler : CinemachineExtension
 {
-    [SerializeField]
+    [SerializeField, Header("ゲーム開始時のカメラ座標")]
     private Vector3 initialPosition;
 
     private float _originXPos;

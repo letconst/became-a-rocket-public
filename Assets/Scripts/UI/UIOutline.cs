@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// UI用アウトラインを描画するクラス
+/// </summary>
 [RequireComponent(typeof(CanvasRenderer))]
 public class UIOutline : MaskableGraphic
 {

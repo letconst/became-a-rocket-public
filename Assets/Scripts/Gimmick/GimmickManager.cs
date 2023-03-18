@@ -4,6 +4,9 @@ using LetConst.MasterData;
 using UniRx;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// 生成されたギミックの管理を行うためのクラス
+/// </summary>
 public sealed class GimmickManager : SingletonMonoBehaviour<GimmickManager>
 {
     private GimmickSoundHandler _soundHandler;
@@ -16,23 +19,27 @@ public sealed class GimmickManager : SingletonMonoBehaviour<GimmickManager>
     /// <summary>各種ギミックのプーリング用インスタンス</summary>
     public GimmickPool Pool { get; private set; }
 
-    protected override async void Awake()
+    protected override void Awake()
     {
         base.Awake();
+        Initialize().Forget();
+    }
 
-        Pool = new GimmickPool();
-        GenerateData =
-            await MasterDataManager.Instance.GetMasterDataAsync<MasterGimmickGeneration>("GimmickGeneration");
+    private async UniTaskVoid Initialize()
+    {
+        Pool         = new GimmickPool();
+        GenerateData = await MasterDataManager.Instance.GetMasterDataAsync<MasterGimmickGeneration>("GimmickGeneration");
 
         Assert.IsNotNull(GenerateData, "GenerateData != null");
 
+        // スコア (高度) ごとのギミック生成テーブルをキューとしてキャッシュ
         foreach (GimmickGenerateEntry entry in GenerateData.GenerateGimmickEntries)
         {
             _entriesPerHeightQueue.Enqueue(entry);
         }
 
-        await GameInitializer.WaitForInitialize();
-        await SoundManager.Instance.WaitForReady();
+        // 他の初期化処理を待機
+        await UniTask.WhenAll(GameInitializer.WaitForInitialize(), SoundManager.Instance.WaitForReady());
 
         _soundHandler = new GimmickSoundHandler(GameManager.Instance, SoundManager.Instance);
         _soundHandler.AddTo(this);

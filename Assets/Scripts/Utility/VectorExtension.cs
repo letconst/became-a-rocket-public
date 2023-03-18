@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// UnityのVector系に関する拡張クラス
+/// </summary>
 public static class VectorExtension
 {
     /// <summary>

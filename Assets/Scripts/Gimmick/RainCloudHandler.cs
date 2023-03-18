@@ -2,6 +2,9 @@
 using UniRx.Triggers;
 using UnityEngine;
 
+/// <summary>
+/// ギミック「雨雲」の動作処理を行うクラス
+/// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 public sealed class RainCloudHandler : GimmickHandlerBase
 {
@@ -43,7 +46,7 @@ public sealed class RainCloudHandler : GimmickHandlerBase
 
     private void OnInvisible()
     {
-        // カメラの範囲外になった際にプールへの返却要求
+        // プールへの返却イベント発行
         GameManager.Instance.PlayerBroker.Publish(GameEvent.Player.OnReturnGimmickRequest.Get(GimmickType.RainCloud, gameObject));
     }
 }

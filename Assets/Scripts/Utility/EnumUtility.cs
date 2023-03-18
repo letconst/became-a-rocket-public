@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// <see cref="Enum"/>用のユーティリティクラス
+/// </summary>
 public static class EnumUtility
 {
     /// <summary>

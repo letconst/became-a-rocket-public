@@ -1,6 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// ランキングレコードのViewクラス
+/// </summary>
 public sealed class RankRecordView : MonoBehaviour
 {
     [SerializeField]

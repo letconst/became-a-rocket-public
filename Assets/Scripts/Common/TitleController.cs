@@ -1,13 +1,22 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
+/// <summary>
+/// タイトルシーンを制御するクラス
+/// </summary>
 public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
 {
     private InputActions _input;
 
-    private async UniTaskVoid Start()
+    private void Start()
+    {
+        Initialize().Forget();
+    }
+
+    private async UniTaskVoid Initialize()
     {
         _input = new InputActions();
         _input.UI.SetCallbacks(this);
@@ -47,6 +56,9 @@ public sealed class TitleController : MonoBehaviour, InputActions.IUIActions
         }
     }
 
+    /// <summary>
+    /// メインゲームシーンを読み込む
+    /// </summary>
     private void LoadMainGame()
     {
         if (SceneManager.Instance.IsLoading)

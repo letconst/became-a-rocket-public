@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// ゲームの定数定義用クラス
+/// </summary>
 public static class GameConstants
 {
     // TODO: マスターデータとして管理

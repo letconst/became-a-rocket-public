@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギャー君の表示制御を行うクラス
+/// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 public sealed class PlayerDisplayHandler : MonoBehaviour
 {
@@ -9,6 +12,11 @@ public sealed class PlayerDisplayHandler : MonoBehaviour
     private FuelGaugeManager _fuelGaugeManager;
 
     private void Start()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
     {
         _selfRenderer     = GetComponent<SpriteRenderer>();
         _fuelGaugeManager = FuelGaugeManager.Instance;

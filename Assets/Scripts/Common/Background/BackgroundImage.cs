@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// ステージ背景画像の設定用クラス
+/// </summary>
 [System.Serializable]
 public sealed class BackgroundImage
 {

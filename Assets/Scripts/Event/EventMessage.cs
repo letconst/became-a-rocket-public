@@ -2,6 +2,9 @@
 {
 }
 
+/// <summary>
+/// <see cref="UniRx.MessageBroker"/>で使用する通知用クラスの基底クラス
+/// </summary>
 public abstract class EventMessage<E>
     where E : EventMessage<E>, new()
 {
@@ -10,6 +13,9 @@ public abstract class EventMessage<E>
     public static E Get() => Cache;
 }
 
+/// <summary>
+/// <see cref="UniRx.MessageBroker"/>で使用する通知用クラスの基底クラス
+/// </summary>
 public abstract class EventMessage<E, P1>
     where E : EventMessage<E, P1>, new()
 {
@@ -25,6 +31,9 @@ public abstract class EventMessage<E, P1>
     }
 }
 
+/// <summary>
+/// <see cref="UniRx.MessageBroker"/>で使用する通知用クラスの基底クラス
+/// </summary>
 public abstract class EventMessage<E, P1, P2>
     where E : EventMessage<E, P1, P2>, new()
 {
@@ -42,6 +51,9 @@ public abstract class EventMessage<E, P1, P2>
     }
 }
 
+/// <summary>
+/// <see cref="UniRx.MessageBroker"/>で使用する通知用クラスの基底クラス
+/// </summary>
 public abstract class EventMessage<E, P1, P2, P3>
     where E : EventMessage<E, P1, P2, P3>, new()
 {

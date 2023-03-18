@@ -77,7 +77,7 @@ public sealed class MeteorHandler : GimmickHandlerBase, IInitializableGimmick, I
     {
         IsMoving = false;
 
-        // Invisibleイベント発行
+        // プールへの返却イベント発行
         GameManager.Instance.PlayerBroker.Publish(GameEvent.Player.OnReturnGimmickRequest.Get(GimmickType.Meteor, gameObject));
     }
 

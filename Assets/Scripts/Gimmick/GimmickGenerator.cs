@@ -4,6 +4,9 @@ using LetConst.MasterData;
 using UniRx;
 using UnityEngine;
 
+/// <summary>
+/// ギミックの生成を制御するクラス
+/// </summary>
 public sealed class GimmickGenerator : MonoBehaviour
 {
     #region Variables
@@ -43,7 +46,6 @@ public sealed class GimmickGenerator : MonoBehaviour
 
     /// <summary>
     /// 各種ギミックの生成を行う。
-    /// TODO: オブジェクトのプーリング
     /// </summary>
     /// <param name="generationHeight">生成を行う領域の高さ</param>
     private void Generate(int generationHeight)

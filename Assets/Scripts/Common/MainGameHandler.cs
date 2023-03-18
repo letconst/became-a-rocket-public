@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// メインゲームシーンを制御するクラス
+/// </summary>
 public sealed class MainGameHandler : MonoBehaviour, InputActions.IUIActions
 {
     private bool _isSubmittedOnReady;
@@ -15,7 +18,12 @@ public sealed class MainGameHandler : MonoBehaviour, InputActions.IUIActions
 
     private GameSoundHandler _soundHandler;
 
-    private async UniTaskVoid Start()
+    private void Start()
+    {
+        Initialize().Forget();
+    }
+
+    private async UniTaskVoid Initialize()
     {
         _input = new InputActions();
         _input.UI.SetCallbacks(this);

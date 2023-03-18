@@ -1,4 +1,7 @@
-﻿public static class GameEvent
+﻿/// <summary>
+/// ゲーム中のイベントの定義用クラス
+/// </summary>
+public static class GameEvent
 {
     /// <summary>
     /// プレイヤー関連のイベント用クラス

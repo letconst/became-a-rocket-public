@@ -6,6 +6,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// シーン遷移制御を行うクラス
+/// </summary>
 public sealed class SceneManager : SingletonMonoBehaviour<SceneManager>
 {
     [SerializeField]
@@ -23,7 +26,11 @@ public sealed class SceneManager : SingletonMonoBehaviour<SceneManager>
     protected override void Awake()
     {
         base.Awake();
+        Initialize();
+    }
 
+    private void Initialize()
+    {
         DontDestroyOnLoad(gameObject);
 
         Assert.IsNotNull(fadeCanvasGroup, "fadeCanvasGroup != null");
@@ -39,20 +46,27 @@ public sealed class SceneManager : SingletonMonoBehaviour<SceneManager>
     /// シーンを読み込む
     /// </summary>
     /// <param name="nextScene">読み込む対象のシーン</param>
-    /// <param name="fadeOutTime">フェードアウトのフェード時間 (秒)</param>
-    /// <param name="fadeInTime">フェードインのフェード時間 (秒)</param>
+    /// <param name="fadeOutTimeInSec">フェードアウトのフェード時間 (秒)</param>
+    /// <param name="fadeInTimeInSec">フェードインのフェード時間 (秒)</param>
     /// <param name="sceneDataPack">1つ前のシーン情報として持たせるデータ</param>
-    public void LoadScene(GameScene nextScene, float fadeOutTime = 1f, float fadeInTime = 1f, SceneDataPack sceneDataPack = null)
+    public void LoadScene(GameScene nextScene, float fadeOutTimeInSec = 1f, float fadeInTimeInSec = 1f,
+                          SceneDataPack sceneDataPack = null)
     {
         // 他にシーンを読み込み中だったら行わない
         if (IsLoading) return;
 
         PrevSceneData = sceneDataPack;
 
-        InternalLoadScene(nextScene.ToString(), fadeOutTime, fadeInTime).Forget();
+        InternalLoadScene(nextScene.ToString(), fadeOutTimeInSec, fadeInTimeInSec).Forget();
     }
 
-    private async UniTask InternalLoadScene(string sceneName, float fadeOutTime, float fadeInTime)
+    /// <summary>
+    /// シーンを読み込む内部処理
+    /// </summary>
+    /// <param name="sceneName">読み込む対象のシーン名</param>
+    /// <param name="fadeOutTimeInSec">フェードアウトのフェード時間 (秒)</param>
+    /// <param name="fadeInTimeInSec">フェードインのフェード時間 (秒)</param>
+    private async UniTask InternalLoadScene(string sceneName, float fadeOutTimeInSec, float fadeInTimeInSec)
     {
         IsLoading = true;
 
@@ -60,15 +74,19 @@ public sealed class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         fadeCanvasGroup.blocksRaycasts = true;
 
-        await FadeTransition.FadeOut(fadeCanvasGroup, fadeOutTime);
+        await FadeTransition.FadeOut(fadeCanvasGroup, fadeOutTimeInSec);
         await LoadSceneAsync(sceneName);
-        await FadeTransition.FadeIn(fadeCanvasGroup, fadeInTime);
+        await FadeTransition.FadeIn(fadeCanvasGroup, fadeInTimeInSec);
 
         fadeCanvasGroup.blocksRaycasts = false;
 
         IsLoading = false;
     }
 
+    /// <summary>
+    /// シーンを非同期で読み込む
+    /// </summary>
+    /// <param name="sceneName">読み込む対象のシーン名</param>
     private async UniTask LoadSceneAsync(string sceneName)
     {
         AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(sceneName);

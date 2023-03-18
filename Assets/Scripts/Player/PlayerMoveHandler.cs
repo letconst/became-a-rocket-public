@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギャー君の移動制御を行うクラス
+/// </summary>
 public sealed class PlayerMoveHandler : MonoBehaviour
 {
     [SerializeField, Header("移動速度")]
@@ -13,8 +15,6 @@ public sealed class PlayerMoveHandler : MonoBehaviour
 
     private int _originYPos;
 
-    private readonly Dictionary<GimmickMoveMethod, float> _additionalMoveMethods = new();
-
     private readonly PlayerMoveVector _moveVector = new();
 
     private float _horizontalScreenHalfLength;
@@ -22,6 +22,12 @@ public sealed class PlayerMoveHandler : MonoBehaviour
     private Camera _cam;
 
     private void Start()
+    {
+        Initialize();
+        EventReceiver();
+    }
+
+    private void Initialize()
     {
         PlayerStatusManager statusManager = PlayerStatusManager.Instance;
         _cam = Camera.main;
@@ -33,8 +39,6 @@ public sealed class PlayerMoveHandler : MonoBehaviour
         _horizontalScreenHalfLength   = VectorUtility.GetScreenLength(Camera.main).x / 2f;
 
         _moveVector.AddTo(this);
-
-        EventReceiver();
     }
 
     private void Update()
@@ -97,11 +101,19 @@ public sealed class PlayerMoveHandler : MonoBehaviour
         _moveVector.Clear();
     }
 
+    /// <summary>
+    /// 回転イベント時の処理
+    /// </summary>
+    /// <param name="data"></param>
     private void OnRotateRequest(GameEvent.Input.OnRotateRequest data)
     {
         Rotate(data.RotateSpeed);
     }
 
+    /// <summary>
+    /// 風との接触イベント時の処理
+    /// </summary>
+    /// <param name="data"></param>
     private void OnWindContacted(GameEvent.Player.OnWindContacted data)
     {
         float rotateSpeed = data.Direction switch
@@ -120,11 +132,19 @@ public sealed class PlayerMoveHandler : MonoBehaviour
         Rotate(rotateSpeed);
     }
 
+    /// <summary>
+    /// ギミックによる押し出しイベント時の処理
+    /// </summary>
+    /// <param name="data"></param>
     private void OnPushGimmickContacted(GameEvent.Player.OnPushGimmickContacted data)
     {
         _moveVector.AddVectorByGimmick(data.MoveMethod, data.MoveSpeedInSec);
     }
 
+    /// <summary>
+    /// 隕石との接触イベント時の処理
+    /// </summary>
+    /// <param name="data"></param>
     private void OnMeteorContacted(GameEvent.Player.OnMeteorContacted data)
     {
         Vector3 vectorToAdd = Vector3.zero;
@@ -215,8 +235,12 @@ public sealed class PlayerMoveHandler : MonoBehaviour
         transform.position += deltaPosition;
     }
 
-    private void Rotate(float rotateSpeed)
+    /// <summary>
+    /// 自身の回転処理を行う
+    /// </summary>
+    /// <param name="rotateSpeedInSec">回転速度 (秒)</param>
+    private void Rotate(float rotateSpeedInSec)
     {
-        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotateSpeedInSec * Time.deltaTime);
     }
 }

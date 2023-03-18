@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// UIのフェード処理を提供するクラス
+/// </summary>
 public static class FadeTransition
 {
     /// <summary>

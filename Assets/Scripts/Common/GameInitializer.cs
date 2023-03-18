@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+/// <summary>
+/// ゲームの初期化処理を行うクラス
+/// </summary>
 public static class GameInitializer
 {
     private static bool _isInitialized;

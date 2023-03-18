@@ -1,5 +1,8 @@
 ﻿using JetBrains.Annotations;
 
+/// <summary>
+/// 文字列に関するユーティリティクラス
+/// </summary>
 public static class StringUtility
 {
     [StringFormatMethod("format")]

@@ -6,6 +6,9 @@ using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// リザルトUIのViewクラス
+/// </summary>
 public sealed class ResultView : MonoBehaviour
 {
     [SerializeField]

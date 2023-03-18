@@ -3,6 +3,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Pool;
 
+/// <summary>
+/// ギミックのプーリングを行うクラス
+/// </summary>
 public sealed class GimmickPool
 {
     private readonly Transform _poolParent;

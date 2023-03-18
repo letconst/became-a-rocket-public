@@ -3,6 +3,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// 背景画像のエンドレス表示処理を行うクラス (旧)
+/// </summary>
 public sealed partial class EndlessBackgroundHandler : MonoBehaviour
 {
     [SerializeField, Header("エンドレス背景として使用する画像")]

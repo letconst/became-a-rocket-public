@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// <see cref="PlayerPrefs"/>用のユーティリティクラス
+/// </summary>
 public static class PlayerPrefsUtility
 {
     /// <summary>

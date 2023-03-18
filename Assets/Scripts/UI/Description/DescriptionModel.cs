@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ゲーム説明表示UIのModelクラス
+/// </summary>
 public sealed class DescriptionModel : MonoBehaviour
 {
     /// <summary>

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 燃料ゲージの設定用クラス
+/// </summary>
 [System.Serializable]
 public class FuelGaugeRatioSettings
 {
@@ -24,6 +27,6 @@ public class FuelGaugeRatioSettings
     [SerializeField, Header("ギャーくんの見た目")]
     private Sprite gyaarSprite;
 
-    /// <summary>ギャーくんの見た目</summary>
+    /// <summary>ギャー君の見た目</summary>
     public Sprite GyaarSprite => gyaarSprite;
 }

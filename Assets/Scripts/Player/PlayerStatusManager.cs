@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギャー君の状態を管理するクラス
+/// </summary>
 public sealed class PlayerStatusManager : SingletonMonoBehaviour<PlayerStatusManager>
 {
     /// <summary>

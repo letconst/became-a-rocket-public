@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// ゲーム説明表示UIのViewクラス
+/// </summary>
 public sealed class DescriptionView : MonoBehaviour
 {
     [SerializeField]

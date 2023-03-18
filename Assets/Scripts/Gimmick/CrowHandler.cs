@@ -1,9 +1,11 @@
-﻿using Cysharp.Threading.Tasks;
-using UniRx;
+﻿using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// <summary>
+/// ギミック「カラス」の動作処理を行うクラス
+/// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 public sealed class CrowHandler : GimmickHandlerBase, IInitializableGimmick, IMovableGimmick
 {
@@ -80,7 +82,7 @@ public sealed class CrowHandler : GimmickHandlerBase, IInitializableGimmick, IMo
 
         IsMoving = false;
 
-        // Invisibleイベント発行
+        // プールへの返却イベント発行
         GameManager.Instance.PlayerBroker.Publish(GameEvent.Player.OnReturnGimmickRequest.Get(GimmickType.Crow, gameObject));
     }
 

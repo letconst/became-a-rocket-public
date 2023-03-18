@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
+/// <summary>
+/// 燃料ゲージUIのViewクラス
+/// </summary>
 public sealed class FuelGaugeView : MonoBehaviour
 {
     [SerializeField]
